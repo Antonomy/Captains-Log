@@ -33,6 +33,17 @@ app.get('captains_log/new', (req, res) => {
 // Update
 
 // Create
+app.post('/captains_log', (req, res) => {
+    req.body.shipIsBroken === 'on' ? req.body.shipIsBroken = true : req.body.shipIsBroken = false
+    Log.create(req.body, (err, createdLog) => {
+        if(err) {
+            console.error(err)
+            res.status(400).send(err)
+        } else {
+            res.redirect(`/logs/${createdLog._id}`)
+        }
+    })
+})
 
 // Edit
 
