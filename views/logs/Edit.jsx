@@ -8,7 +8,7 @@ class Edit extends React.Component {
             <form method="POST" action={`/logs/${_id}?_method=PUT`}>
                 Title: <input type="text" name="title" defaultValue={title} /> <br />
                 Entry: <input type="text" name="entry" defaultValue={entry} /> <br />
-                Ship is Broken: <input type="checkbox" name-="shipIsBroken" defaultChecked={shipIsBroken} /> <br />
+                Ship is Broken: <input type="checkbox" name="shipIsBroken" defaultChecked={shipIsBroken} /> <br />
                 <input type="submit" value="Edit Log" />
             </form>
             </>
