@@ -24,68 +24,68 @@ app.use(express.static('public'))
 
 
 //Index
-app.get('/captains_log', (req,res) => {
+app.get('/logs', (req,res) => {
     if (err) {
         console.error(err)
         res.status(400).send(err)
     }else {
-        res.render('captains_log/Index', {
+        res.render('logs/Index', {
             logs: foundLogs
         })
     }
 })
 
 // New
-app.get('/captains_log/new', (req, res) => {
-    res.render('captains_log/New')
+app.get('/logs/new', (req, res) => {
+    res.render('logs/New')
 })
 // Delete
-app.delete('/captains_log/:id', (req,res) => {
+app.delete('/logs/:id', (req,res) => {
     Log.findByIdAndDelete(req.params.id, (err, deletedLog) => {
         if(err) {
             console.error(err)
             res.status(400).send(err)
         } else {
-            res.redirect('/captains_log')
+            res.redirect('/logs')
         }
     })
 })
 
 // Update
-app.put('/captains_log/:id', (req, res) => {
+app.put('/logs/:id', (req, res) => {
     req.body.shipIsBroken === 'on' || req.body.shipIsBroken === true ? req.body.shipIsBroken = true : req.body.shipIsBroken = false
     Log.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedFruit) => {
         if(err) {
             console.error(err)
             res.status(400).send(err)
         } else {
-            res.redirect(`/captains_log/${updatedLog._id}`)
+            res.redirect(`/logs/${updatedLog._id}`)
         }
     })
 })
 
 
 // Create
-app.post('/captains_log', (req, res) => {
+app.post('/logs', (req, res) => {
     req.body.shipIsBroken === 'on' ? req.body.shipIsBroken = true : req.body.shipIsBroken = false
     Log.create(req.body, (err, createdLog) => {
         if(err) {
             console.error(err)
             res.status(400).send(err)
         } else {
-            res.redirect(`/captains_log/${createdLog._id}`)
+            res.redirect(`/logs/${createdLog._id}`)
         }
     })
 })
 
 // Edit
-app.get('/captains_log/:id/edit', (req, res) => {
+app.get('/logs/:id/edit', (req, res) => {
     Log.findById(req.params.id, (err, foundLog) => {
         if(err) {
             console.error(err)
             res.status(400).send(err)
         } else {
-            res.render('captains_log/Edit', {
+            res.render('logs/Edit', {
                 log: foundLog
             })
         }
@@ -93,13 +93,13 @@ app.get('/captains_log/:id/edit', (req, res) => {
 })
 
 // Show
-app.get('/captains_log/:id', (req, res) => {
+app.get('/logs/:id', (req, res) => {
     Log.findById(req.params.id, (err, foundLog) => {
         if(err) {
             console.error(err)
             res.status(400).send(err)
         } else {
-            res.render('captains_log/Show', {
+            res.render('logs/Show', {
                 log: foundLog
             })
         }

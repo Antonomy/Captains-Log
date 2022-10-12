@@ -7,7 +7,7 @@ class Show extends React.Component {
             <p>Title:{title} <br />
             Entry:{entry} <br />
             {shipIsBroken? "Ship is broken.":"Ship is not broken."} <br />
-            <a href="/captains_log">Back to Index Page</a></p>
+            <a href="/logs">Back to Index Page</a></p>
         )
     }
 }

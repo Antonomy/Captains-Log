@@ -12,13 +12,13 @@ class Index extends React.Component {
                             const { title, entry, shipIsBroken, _id } = log;
                             return (
                                 <li key={_id}>
-                                    <a href={`/captains_log/${_id}`}> { title }</a> <br />
+                                    <a href={`/logs/${_id}`}> { title }</a> <br />
                                     {
                                         shipIsBroken?
                                         'The ship is broken':
                                         'The ship is not broken'
                                     }
-                                    <form method="POST" action={`/captains_log/${id}?_method=DELETE`}>
+                                    <form method="POST" action={`/logs/${id}?_method=DELETE`}>
                                         <input type="submit" value={`Delete`}/>
                                     </form>
                                 </li>
@@ -26,7 +26,7 @@ class Index extends React.Component {
                         })
                     }
                     {
-                        <a href="/captains_log/new">New Page</a>
+                        <a href="/logs/new">New Page</a>
                     }
                 </ul>
             </>
