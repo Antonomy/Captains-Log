@@ -52,6 +52,18 @@ app.delete('/captains_log/:id', (req,res) => {
 })
 
 // Update
+app.put('/captains_log/:id', (req, res) => {
+    req.body.shipIsBroken === 'on' || req.body.shipIsBroken === true ? req.body.shipIsBroken = true : req.body.shipIsBroken = false
+    Log.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedFruit) => {
+        if(err) {
+            console.error(err)
+            res.status(400).send(err)
+        } else {
+            res.redirect(`/captains_log/${updatedLog._id}`)
+        }
+    })
+})
+
 
 // Create
 app.post('/captains_log', (req, res) => {
