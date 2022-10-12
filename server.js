@@ -58,6 +58,21 @@ app.post('/captains_log', (req, res) => {
 // Edit
 
 // Show
+app.get('/captains_log/:id', (req, res) => {
+    Log.findById(req.params.id, (err, foundLog) => {
+        if(err) {
+            console.error(err)
+            res.status(400).send(err)
+        } else {
+            res.render('captains_log/Show', {
+                log: foundLog
+            })
+        }
+    })
+})
+
+
+
 
 
 // End Routes
