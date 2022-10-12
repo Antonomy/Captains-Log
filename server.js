@@ -5,6 +5,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const Log = require ('./models/log.js')
+const { GridFSBucketWriteStream } = require('mongodb')
 // Create Express App
 const app = express()
 
@@ -66,6 +67,18 @@ app.post('/captains_log', (req, res) => {
 })
 
 // Edit
+app.get('/captains_log/:id/edit', (req, res) => {
+    Log.findById(req.params.id, (err, foundLog) => {
+        if(err) {
+            console.error(err)
+            res.status(400).send(err)
+        } else {
+            res.render('captains_log/Edit', {
+                log: foundLog
+            })
+        }
+    })
+})
 
 // Show
 app.get('/captains_log/:id', (req, res) => {
