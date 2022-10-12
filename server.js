@@ -23,10 +23,20 @@ app.use(express.static('public'))
 
 
 //Index
+app.get('/captains_log', (req,res) => {
+    if (err) {
+        console.error(err)
+        res.status(400).send(err)
+    }else {
+        res.render('captains_log/Index', {
+            logs: foundLogs
+        })
+    }
+})
 
 // New
-app.get('captains_log/new', (req, res) => {
-    res.render('new')
+app.get('/captains_log/new', (req, res) => {
+    res.render('captains_log/New')
 })
 // Delete
 
