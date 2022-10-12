@@ -18,6 +18,9 @@ class Index extends React.Component {
                                         'The ship is broken':
                                         'The ship is not broken'
                                     }
+                                    <form method="POST" action={`/captains_log/${id}?_method=DELETE`}>
+                                        <input type="submit" value={`Delete`}/>
+                                    </form>
                                 </li>
                             )
                         })

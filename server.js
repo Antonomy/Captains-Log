@@ -39,6 +39,16 @@ app.get('/captains_log/new', (req, res) => {
     res.render('captains_log/New')
 })
 // Delete
+app.delete('/captains_log/:id', (req,res) => {
+    Log.findByIdAndDelete(req.params.id, (err, deletedLog) => {
+        if(err) {
+            console.error(err)
+            res.status(400).send(err)
+        } else {
+            res.redirect('/captains_log')
+        }
+    })
+})
 
 // Update
 
@@ -50,7 +60,7 @@ app.post('/captains_log', (req, res) => {
             console.error(err)
             res.status(400).send(err)
         } else {
-            res.redirect(`/logs/${createdLog._id}`)
+            res.redirect(`/captains_log/${createdLog._id}`)
         }
     })
 })
