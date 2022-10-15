@@ -1,11 +1,12 @@
-const { title } = require('process')
 const React = require('react')
+const Default = require('../layouts/Default.jsx')
+
 
 class Index extends React.Component {
     render() {
         const { logs } = this.props
         return (
-            <>
+            <Default title="Capitan's Log Index Page">
                 <ul>
                     {
                         logs.map((log) => {
@@ -29,7 +30,7 @@ class Index extends React.Component {
                         <a href="/logs/new">New Page</a>
                     }
                 </ul>
-            </>
+            </Default>
         )
     }
 }
